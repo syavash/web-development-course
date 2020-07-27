@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bazie XO</title>
+    <style>
+      #board {
+        width: 270px;
+        height: 270px;
+        border: 1px solid #666;
+      }
+
+      .cell {
+        text-align: center;
+        display: block;
+        width: 88px;
+        height: 88px;
+        border: 1px solid #666;
+        float: left;
+        cursor: pointer;
+        font-size: 60px;
+        line-height: 88px;
+      }
+
+      .cell:hover {
+        background: #f1f1f1;
+      }
+
+      .fill-x,
+      .fill-o {
+        cursor: not-allowed;
+      }
+
+      .fill-x::after {
+        content: "X";
+        color: red;
+      }
+
+      .fill-o::after {
+        content: "O";
+        color: blue;
+      }
+
+      .highlight {
+        background: #aaffaa !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="message">Nobate X ast</h1>
+    <div id="board">
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+      <a class="cell"></a>
+    </div>
+    <script>
+      var turn = "x";
+      var cells = document.querySelectorAll(".cell");
+      var message = document.getElementById("message");
+      var isEnd = false;
+      var winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+
+      function checkDraw() {
+        var draw = true;
+        for (var i = 0; i < cells.length; i++) {
+          var cell = cells[i];
+          if (
+            !cell.classList.contains("fill-x") &&
+            !cell.classList.contains("fill-o")
+          ) {
+            draw = false;
+            break;
+          }
+        }
+        return draw;
+      }
+
+      function checkWin() {
+        var currentClass = "fill-" + turn;
+        return winningConditions.some(function (winningCondition) {
+          var won = winningCondition.every(function (index) {
+            return cells[index].classList.contains(currentClass);
+          });
+          if (won) {
+            for (var i = 0; i < winningCondition.length; i++) {
+              cells[winningCondition[i]].classList.add("highlight");
+            }
+          }
+          return won;
+        });
+      }
+
+      function startGame() {
+        for (var i = 0; i < cells.length; i++) {
+          cells[i].addEventListener(
+            "click",
+            function (e) {
+              debugger;
+              if (isEnd) return;
+
+              var cell = e.target;
+              cell.classList.add("fill-" + turn);
+
+              if (checkWin()) {
+                message.innerHTML = turn.toUpperCase() + " bazi ro bord!";
+                isEnd = true;
+              } else if (checkDraw()) {
+                message.innerHTML = "Bazi mosavi shod!";
+                isEnd = true;
+              } else {
+                if (turn == "x") turn = "o";
+                else turn = "x";
+                message.innerHTML = "Nobate " + turn.toUpperCase() + " ast";
+              }
+            },
+            { once: true }
+          );
+        }
+      }
+
+      startGame();
+    </script>
+  </body>
+</html>
