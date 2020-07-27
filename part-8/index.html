@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liste Kharid</title>
+  </head>
+  <body>
+    <h1>Liste Kharid</h1>
+    <form action="">
+      <input id="voroodi" type="text" />
+      <button onclick="addTodo(); return false;">
+        Ezafe Kon
+      </button>
+    </form>
+    <ul id="todo-list"></ul>
+    <script>
+      var listeKharid = ["Shir", "Moz", "Havij"];
+      var todoList = document.getElementById("todo-list");
+
+      function renderTodo() {
+        todoList.innerHTML = "";
+        for (var i = 0; i < listeKharid.length; i++) {
+          todoList.innerHTML +=
+            "<li>" +
+            listeKharid[i] +
+            ' <a href="#" onclick="deleteTodo(' +
+            i +
+            ')">X</a></li>';
+        }
+
+        // var i = 0;
+        // while (i < listeKharid.length) {
+        //   todoList.innerHTML +=
+        //     "<li>" +
+        //     listeKharid[i] +
+        //     ' <a href="#" onclick="deleteTodo(' +
+        //     i +
+        //     ')">X</a></li>';
+        //   i = i + 1;
+        // }
+      }
+
+      function addTodo() {
+        var voroodi = document.getElementById("voroodi");
+        var value = voroodi.value.toLowerCase();
+
+        listeKharid.push(value);
+        voroodi.value = "";
+        renderTodo();
+      }
+
+      function deleteTodo(index) {
+        listeKharid.splice(index, 1);
+        renderTodo();
+      }
+
+      renderTodo();
+    </script>
+  </body>
+</html>
