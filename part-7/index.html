@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Siavash Homepage</title>
+
+		<meta charset="UTF-8" />
+		<meta name="description" content="Lorem ipsum aliquip minim mollit sit velit proident elit duis aute irure tempor magna sint pariatur reprehenderit aliquip et voluptate consequat cillum tempor in culpa irure dolore ea aute laboris in elit tempor sed." />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		
+		<style>
+			body, html {
+				padding: 0;
+				margin: 0;
+			}
+
+			html {
+				background: #fafafa;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+				padding-top: 50px;
+			}
+
+			a {
+				color: #222222;
+			}
+
+			#main-header {
+				background: #ffffff;
+				padding: 5px;
+				box-shadow: 0 4px 2px -2px rgba(0,0,0,.05);
+
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				z-index: 100;
+			}
+
+			#main-header h1 {
+				font-size: 20px;
+				margin: 0;
+				margin-right: 20px;
+				float: left;
+				padding: 5px;
+			}
+
+			#main-header nav ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			#main-header nav ul li {
+				float: left;
+				margin-left: 20px;
+			}
+
+			#main-header nav ul li a {
+				padding: 10px;
+				display: block;
+				text-decoration: none;
+				border: 1px solid transparent;
+			}
+
+			#main-header nav ul li a:hover {
+				background: #f7f7f7;
+				border: 1px solid #e1e1e1;
+				border-radius: 5px;
+			}
+
+			.clearfix:after {
+			  visibility: hidden;
+			  display: block;
+			  font-size: 0;
+			  content: " ";
+			  clear: both;
+			  height: 0;
+			}
+
+			#featured-article {
+			}
+
+			#featured-article h2, #featured-article h3 {
+				margin: 5px 0;
+			}
+
+			#featured-article figure {
+				float: left;
+				margin: 0 20px 0 0;
+			}
+
+			#featured-article figure img {
+				width: 140px;
+			}
+
+			#featured-article p {
+				overflow: hidden;
+			}
+
+			.container {
+				width: 960px;
+				margin: 0 auto;
+			}
+
+			.card {
+				background: #fff;
+				padding: 15px;
+				border-radius: 5px;
+				border: 1px solid #e1e1e1;
+				margin-top: 20px;
+			}
+
+			.post-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+			}
+
+			.post-list article {
+				position: relative;
+				padding-left: 200px;
+
+			}
+
+			.post-list article footer {
+				position: absolute;
+				left: 0;
+				top: 5px;
+				width: 200px;
+			}
+
+			.post-list figure img {
+				max-width: 100%;
+			}
+
+			.post-list figure figcaption {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			.post-list time {
+				color: #888;
+				padding-bottom: 5px;
+				display: block;
+			}
+
+			.post-list li {
+				border-bottom: 1px solid #e1e1e1;
+				margin-bottom: 25px;
+				padding-bottom: 25px;
+			}
+
+			.post-list li:last-child {
+				border-bottom: 0;
+				margin-bottom: 0;
+				padding-bottom: 0;
+			}
+
+			#footer-links {
+				margin-top: 40px;
+				background: #fff;
+				border-top: 1px solid #e1e1e1;
+				border-bottom: 1px solid #e1e1e1;
+				padding: 20px 0;
+			}
+
+			#footer-links .column {
+				width: 50%;
+				float: left;
+			}
+
+			#footer-links ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+
+			#footer-links ul li {
+				padding: 5px 10px;
+			}
+
+			#footer-links h3 {
+				margin: 5px 10px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #e1e1e1;
+			}
+
+			#footer-links a {
+				color: #111111;
+				text-decoration: none;
+			}
+
+			.social-link {
+				background: left center no-repeat;
+				padding-left: 24px;
+			}
+
+			.social-link.twitter {
+				background-image: url(images/twitter.png);
+			}
+
+			.social-link.facebook {
+				background-image: url(images/facebook.png);
+			}
+
+			.social-link.instagram {
+				background-image: url(images/instagram.png);
+			}
+
+			body > footer {
+				padding: 19px 0;
+			}
+
+			body > footer span {
+				float: left;
+				margin-right: 20px;
+			}
+
+			body > footer ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+
+			body > footer ul li {
+				float: left;
+				margin-right: 10px;
+			}
+
+			body > footer ul li::after {
+				content: "-";
+				margin-left: 10px;
+				color: #888;
+			}
+
+			body > footer ul li:last-child::after {
+				content: "";
+			}
+
+			form div {
+				margin-bottom: 10px;
+			}
+
+			form label {
+				display: block;
+				margin-bottom: 5px;
+			}
+
+			form input, form button, form textarea {
+				border: 1px solid #d1d1d1;
+				border-radius: 5px;
+				padding: 7px;
+				background: #f7f7f7;
+			}
+
+			form input:focus, form button:focus, form textarea:focus {
+				background: #fff;
+			}
+
+			form fieldset {
+				padding: 10px;
+				margin-bottom: 20px;
+				border: 1px solid #e1e1e1;
+			}
+
+			form legend {
+				font-weight: bold;
+			}
+
+			.light {
+				width: 200px;
+			}
+
+			.light-container {
+				text-align: center;
+			}
+		</style>
+
+	</head>
+	<body>
+		<header id="main-header" class="clearfix">
+			<div class="container">
+				<h1>Siavash Homepage</h1>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="about.html">About Us</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<div class="container">
+			<aside id="featured-article" class="clearfix card">
+				<figure>
+					<img src="images/siavash.jpg" alt="Baby Siavash" />
+				</figure>
+				<header>
+					<h2>Featured Article</h2>
+					<h3><a href="featured.html">Baby Siavash Picture</a></h3>
+				</header>
+				<p>
+					Magna enim mollit adipisicing incididunt id dolore aliquip adipisicing nulla cillum veniam reprehenderit non sint aute elit quis sunt nisi consequat sunt nostrud sit.
+				</p>
+			</aside>
+			<div class="card light-container">
+				<form>
+					<button onclick="switchLight(true); return false;">Turn on light</button>
+					<button onclick="switchLight(false); return false;">Turn off light</button>
+					<button onclick="switchLight(); return false;">Toggle light</button>
+				</form>
+				<img id="light-bulb" 
+					class="light" 
+					src="images/light-on.png" 
+					alt="Light" 
+				/>
+			</div>
+
+			<main class="card">
+				<ol class="post-list">
+					<li>
+						<article>
+							<header>
+								<footer>
+									<time datetime="2017-06-12T23:00+3:30">June 12, 2017 - 11:00pm</time>
+									<address>
+										By <a href="siavash.html">Siavash Mahmoudian</a>
+									</address>
+								</footer>
+								<h2><a href="post1.html">Amet sunt ex do deserunt duis et nostrud duis consequat ut in ut excepteur tempor sit cillum ullamco ullamco.</a></h2>
+							</header>
+							<div>
+								<p>Dolore adipisicing aute ex eu qui consectetur sed aliquip officia magna deserunt labore magna quis nulla est officia pariatur nostrud et tempor proident eiusmod aliquip elit elit laborum ullamco dolore ut cillum labore ut mollit deserunt sunt velit do fugiat sint duis dolore irure amet consequat commodo sunt magna qui cillum aliqua est duis deserunt dolore occaecat in in sunt dolor aliquip in excepteur excepteur tempor dolor occaecat deserunt culpa eu proident dolore dolor ut irure commodo dolor duis ex esse magna occaecat reprehenderit fugiat dolore occaecat ut enim esse dolore cupidatat id nostrud incididunt exercitation deserunt dolor minim aliquip esse reprehenderit aliquip ut eiusmod occaecat pariatur sed enim in qui sint deserunt exercitation cupidatat ut nisi officia aute dolore consectetur id pariatur ad aute et magna occaecat est officia elit nulla ad ut incididunt nisi tempor in ad ad ex excepteur est incididunt sunt anim exercitation sint fugiat incididunt nisi non mollit in veniam dolore eiusmod ex nostrud sint laboris nostrud ea nostrud voluptate sit consequat pariatur elit fugiat id do aliqua cillum incididunt laboris voluptate duis ea dolor nisi eu in veniam adipisicing in sunt excepteur qui esse minim duis exercitation sunt mollit officia exercitation velit duis quis non duis ea dolore sint reprehenderit elit dolor mollit amet veniam incididunt consectetur et amet nulla consectetur dolore reprehenderit et labore qui deserunt sint anim consectetur mollit elit excepteur nulla sint cillum.</p>
+							</div>
+						</article>
+					</li>
+
+					<li>
+						<article>
+							<header>
+								<footer>
+									<time datetime="2017-06-12T23:00+3:30">June 12, 2017 - 11:00pm</time>
+									<address>
+										By <a href="siavash.html">Siavash Mahmoudian</a>
+									</address>
+								</footer>
+								<h2><a href="post2.html">Duis sed eiusmod aliqua excepteur sit consectetur dolor laboris nisi.</a></h2>
+							</header>
+							<div>
+								<p>Lorem ipsum pariatur excepteur veniam ut nulla consectetur exercitation aliquip cillum officia magna ex in eiusmod mollit sunt nostrud commodo tempor quis duis ut irure velit pariatur dolor adipisicing in officia aliquip laboris proident non consectetur ullamco nostrud sint est deserunt sint ut anim labore dolore ex aliqua in qui ut velit mollit excepteur tempor in amet reprehenderit dolore id esse occaecat ut deserunt eiusmod minim ut sed ut anim in eu dolor minim ea consectetur ex laboris labore dolore incididunt sed anim eiusmod ut aliqua sint aliquip incididunt ut amet duis esse ullamco tempor ad est dolor duis velit esse do commodo aute ut do velit pariatur sed laboris proident ad elit consequat nisi ex non tempor magna fugiat sint ullamco nostrud qui duis consequat aliquip in cillum voluptate enim minim dolore magna commodo ea nisi est anim labore sit sunt esse reprehenderit irure laboris velit ea laboris sunt cillum adipisicing id veniam aliquip in dolor voluptate reprehenderit nisi dolore adipisicing et reprehenderit nulla occaecat exercitation amet enim nulla veniam excepteur occaecat id commodo minim in cillum aliqua amet sint adipisicing in non ad adipisicing magna occaecat laborum qui pariatur occaecat irure cillum magna sunt do est magna consectetur ad ullamco anim ullamco ea ut ex ad magna magna aute ea irure commodo ut officia ut sint ut non labore culpa dolor veniam ut.</p>
+								<figure>
+									<img src="images/arash.jpg" alt="Baby Arash" />
+									<figcaption>A picture of Arash</figcaption>
+								</figure>
+								<p>Veniam fugiat exercitation mollit reprehenderit proident deserunt velit proident laboris in incididunt anim proident ea do esse dolor ut elit laboris consequat minim in qui amet do nostrud sint fugiat consequat in culpa. Ut ut minim consequat mollit in mollit excepteur consectetur sed mollit anim non est aliqua dolor in sunt dolore et non laboris sed incididunt occaecat enim exercitation in do irure eiusmod in sed voluptate aute duis ullamco fugiat amet.</p>
+							</div>
+							<details>
+								<summary>Click here to see more</summary>
+								<p>Minim nostrud nulla excepteur adipisicing consectetur esse exercitation exercitation dolore dolore id nulla et qui amet nulla sit nulla quis laborum quis. Elit et excepteur consequat elit in dolore dolore laborum sit reprehenderit qui aliquip dolor aliqua culpa dolore officia veniam deserunt.</p>
+							</details>
+						</article>
+					</li>
+
+					<li>
+						<article>
+							<header>
+								<footer>
+									<time datetime="2017-06-12T23:00+3:30">June 12, 2017 - 11:00pm</time>
+									<address>
+											By <a href="siavash.html">Siavash Mahmoudian</a>
+										</address>
+									</footer>
+									<h2><a href="post3.html">Officia sint ea incididunt ullamco voluptate excepteur incididunt velit anim aliqua.</a></h2>
+								</header>
+								<div>
+									<p>In consequat tempor nostrud laboris eiusmod eu adipisicing dolore minim sit incididunt qui cillum exercitation aliquip duis consequat quis id cupidatat enim sed ut dolor laboris non nisi dolor duis ut incididunt nulla cillum in nostrud adipisicing sit irure et in nisi veniam quis incididunt cupidatat ea veniam mollit reprehenderit veniam sint exercitation qui sed eiusmod ut in aliqua est aute exercitation culpa sunt reprehenderit sed id in ad reprehenderit sint exercitation elit irure esse id veniam officia enim reprehenderit magna amet in veniam esse cupidatat sunt sunt magna id adipisicing aute commodo dolore deserunt quis voluptate tempor magna et mollit sunt ut esse proident eiusmod ut ut esse sit veniam deserunt pariatur cillum irure elit pariatur id qui exercitation minim ut nisi magna est qui eu incididunt qui ea cupidatat ullamco dolor dolor fugiat dolor nostrud dolor eiusmod culpa pariatur reprehenderit quis elit qui enim consequat do adipisicing enim reprehenderit id pariatur sit proident cupidatat pariatur aute pariatur enim tempor fugiat velit aliqua nisi nostrud non irure dolor mollit veniam ut dolore ea irure proident sed dolore amet eu exercitation qui dolore esse sed aliqua ullamco magna aliqua ut in fugiat tempor ut amet nulla dolore anim ad aliquip eiusmod est magna tempor aute commodo ea amet nisi dolore anim incididunt consequat aliqua aute sint ullamco elit proident aliqua laboris est sit esse eu elit deserunt est in proident adipisicing sit mollit et cillum id minim elit sit nulla laboris eiusmod sunt anim exercitation elit et enim amet cupidatat occaecat aliquip dolor in qui nisi eiusmod ex.</p>
+								</div>
+							</article>
+						</li>				
+
+				</ol>
+			</main>
+		</div>
+
+		<div class="container">
+			<section id="contanct-form" class="card">
+				<form method="get" action="index.html">
+					<fieldset>
+						<legend>Basic Info</legend>
+						<div>
+							<label for="username">Username</label>
+							<input id="username" type="text" name="username" placeholder="e.g. John" required />
+						</div>
+
+						<div>
+							<label>Password</label>
+							<input type="password" name="password" />
+						</div>
+
+						<div>
+							<label>Gender</label>
+							<label>
+								<input type="radio" name="gender" checked value="m" /> Male
+							</label>
+							<label>
+								<input type="radio" name="gender" value="f" /> Female
+							</label>
+						</div>
+
+						<div>
+							<label>
+								<input type="checkbox" name="skills" value="Programming" checked /> Programming
+							</label>
+							<label>
+								<input type="checkbox" name="skills" value="Chess" checked /> Chess
+							</label>
+							<label>
+								<input type="checkbox" name="skills" value="Dancing" /> Dancing
+							</label>
+						</div>
+
+						<div>
+							<label>City</label>
+							<select name="city" id="city">
+								<option value="">(Select City)</option>
+								<option value="Bidgol">Bidgol</option>
+								<option value="Tehran">Tehran</option>
+								<option value="Shiraz">Shiraz</option>
+								<option value="Isfahan">Isfahan</option>
+							</select>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>More Info</legend>
+						<div>
+							<label>Bio</label>
+							<textarea name="bio" id="bio" cols="30" rows="5"></textarea>
+						</div>
+
+						<div>
+							<label>Photo</label>
+							<input type="file" name="photo" />
+						</div>
+
+						<div>
+							<label>Email</label>
+							<input type="email" name="email" />
+						</div>	
+
+						<div>
+							<label>Search</label>
+							<input type="search" name="search" />
+						</div>	
+
+
+						<div>
+							<label>Color</label>
+							<input type="color" name="color" />
+						</div>	
+
+
+						<div>
+							<label>Birthdate</label>
+							<input type="date" name="birthdate" />
+						</div>	
+
+						<div>
+							<label>Grade</label>
+							<input type="number" name="grade" min="0" max="20" />
+						</div>	
+
+						<div>
+							<label>Minimum Price</label>
+							<input type="range" name="minPrice" min="0" max="50" />
+						</div>	
+
+					</fieldset>
+
+
+					<div>
+						<input type="submit" value="Register" />
+						<input type="reset" value="Reset Form" />
+					</div>
+				</form>
+			</section>
+		</div>
+
+		<section id="footer-links" class="clearfix">
+			<div class="container">
+				<div class="column">
+					<h3>Browse</h3>
+					<ul>
+						<li><a href="#">Amet pariatur irure irure ea magna in dolore commodo deserunt qui nulla enim sit ut sit nisi enim reprehenderit.</a></li>
+						<li><a href="#">Culpa nostrud consectetur exercitation qui officia deserunt voluptate ut consequat non deserunt.</a></li>
+						<li><a href="#">Dolor ullamco occaecat aliqua est dolor eiusmod nostrud pariatur adipisicing sunt velit ad.</a></li>
+					</ul>
+				</div>
+				<div class="column">
+					<h3>Social</h3>
+					<ul>
+						<li><a class="social-link twitter" rel="external" href="https://twitter.com/siavash">Twitter</a></li>
+						<li><a class="social-link instagram" rel="external" href="https://instagram.com/siavash">Instagram</a></li>
+						<li><a class="social-link facebook" rel="external" href="https://facebook.com/mahmoudian">Facebook</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<footer class="clearfix">
+			<div class="container">
+				<span>&copy; Siavash Mahmoudian 2017</span>
+				<ul>
+					<li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="terms.html">Terms of Service</a></li>
+					<li><a href="mailto:syavash@gmail.com">Support</a></li>
+				</ul>
+			</div>
+		</footer>
+		<script>
+			function switchLight(value) {
+				var lightBulb = document.getElementById('light-bulb')
+				if (typeof value == 'undefined') {
+					if (lightBulb.src.indexOf('light-on') == -1) {
+						value = true
+					} else {
+						value = false
+					}
+				}
+
+				if (value == true) {
+					lightBulb.src = 'images/light-on.png'
+					document.querySelector('html').style = ''
+				} else {
+					lightBulb.src = 'images/light-off.png'
+					document.querySelector('html').style = 'background: #666666'
+				}
+			}
+		</script>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
