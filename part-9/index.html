@@ -6,40 +6,41 @@
     <title>Bazie XO</title>
     <style>
       #board {
-        width: 270px;
-        height: 270px;
-        border: 1px solid #666;
+        width: 300px;
+        height: 300px;
+        border: 1px #999999 solid;
       }
 
       .cell {
-        text-align: center;
         display: block;
-        width: 88px;
-        height: 88px;
-        border: 1px solid #666;
+        width: 98px;
+        height: 98px;
+        border: 1px #999999 solid;
         float: left;
         cursor: pointer;
-        font-size: 60px;
-        line-height: 88px;
+
+        font-size: 70px;
+        text-align: center;
+        line-height: 98px;
       }
 
-      .cell:hover {
-        background: #f1f1f1;
-      }
-
-      .fill-x,
-      .fill-o {
+      .cell.fill-x,
+      .cell.fill-o {
         cursor: not-allowed;
       }
 
-      .fill-x::after {
+      .cell.fill-x::after {
         content: "X";
         color: red;
       }
 
-      .fill-o::after {
+      .cell.fill-o::after {
         content: "O";
         color: blue;
+      }
+
+      .cell:hover {
+        background: #f1f1f1;
       }
 
       .highlight {
@@ -61,8 +62,8 @@
       <a class="cell"></a>
     </div>
     <script>
-      var turn = "x";
       var cells = document.querySelectorAll(".cell");
+      var turn = "x";
       var message = document.getElementById("message");
       var isEnd = false;
       var winningConditions = [
@@ -76,65 +77,58 @@
         [2, 4, 6],
       ];
 
+      function checkWin() {
+        var turnClass = "fill-" + turn;
+        var isWon = winningConditions.some(function (winningCondition) {
+          var winning = winningCondition.every(function (index) {
+            return cells[index].classList.contains(turnClass);
+          });
+          if (winning) {
+            for (var j = 0; j < winningCondition.length; j++) {
+              cells[winningCondition[j]].classList.add("highlight");
+            }
+          }
+          return winning;
+        });
+        return isWon;
+      }
+
       function checkDraw() {
-        var draw = true;
+        filledCount = 0;
         for (var i = 0; i < cells.length; i++) {
           var cell = cells[i];
           if (
-            !cell.classList.contains("fill-x") &&
-            !cell.classList.contains("fill-o")
-          ) {
-            draw = false;
-            break;
-          }
+            cell.classList.contains("fill-x") ||
+            cell.classList.contains("fill-o")
+          )
+            filledCount++;
         }
-        return draw;
+        if (filledCount === 9) return true;
+        else return false;
       }
 
-      function checkWin() {
-        var currentClass = "fill-" + turn;
-        return winningConditions.some(function (winningCondition) {
-          var won = winningCondition.every(function (index) {
-            return cells[index].classList.contains(currentClass);
-          });
-          if (won) {
-            for (var i = 0; i < winningCondition.length; i++) {
-              cells[winningCondition[i]].classList.add("highlight");
+      for (var i = 0; i < cells.length; i++) {
+        cells[i].addEventListener(
+          "click",
+          function (e) {
+            if (isEnd) return;
+            var cell = e.target;
+            cell.classList.add("fill-" + turn);
+
+            if (checkWin()) {
+              message.innerHTML = turn.toUpperCase() + " barande shod!";
+              isEnd = true;
+            } else if (checkDraw()) {
+              message.innerHTML = "Bazi mosavi shod!";
+              isEnd = true;
+            } else {
+              turn = turn === "x" ? "o" : "x";
+              message.innerHTML = "Nobate " + turn.toUpperCase() + " ast";
             }
-          }
-          return won;
-        });
+          },
+          { once: true }
+        );
       }
-
-      function startGame() {
-        for (var i = 0; i < cells.length; i++) {
-          cells[i].addEventListener(
-            "click",
-            function (e) {
-              debugger;
-              if (isEnd) return;
-
-              var cell = e.target;
-              cell.classList.add("fill-" + turn);
-
-              if (checkWin()) {
-                message.innerHTML = turn.toUpperCase() + " bazi ro bord!";
-                isEnd = true;
-              } else if (checkDraw()) {
-                message.innerHTML = "Bazi mosavi shod!";
-                isEnd = true;
-              } else {
-                if (turn == "x") turn = "o";
-                else turn = "x";
-                message.innerHTML = "Nobate " + turn.toUpperCase() + " ast";
-              }
-            },
-            { once: true }
-          );
-        }
-      }
-
-      startGame();
     </script>
   </body>
 </html>
